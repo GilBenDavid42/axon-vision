@@ -11,7 +11,7 @@ def presenter(detections_queue: Queue, video_settings_queue: Queue):
 
     # Start receiving frames with motion
     while True:
-        # Blocking function to detect a new frame in the queue
+        # Blocking function to receive a new detection in the queue
         detection = detections_queue.get()
         # None signals the video ended
         if detection is None:

@@ -16,4 +16,4 @@ def get_motion_contours(prev_frame, frame):
 
     # Find contours of the motion areas
     motion_contours = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    yield imutils.grab_contours(motion_contours)
+    return imutils.grab_contours(motion_contours)

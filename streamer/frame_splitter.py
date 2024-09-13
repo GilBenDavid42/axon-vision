@@ -9,6 +9,7 @@ class FrameSplitter:
 
     def split_frames(self):
         cap = cv2.VideoCapture(self.video_path)
-        while True:
-            _, frame = cap.read()
+        next_frame_exists = True
+        while next_frame_exists:
+            next_frame_exists, frame = cap.read()
             yield frame

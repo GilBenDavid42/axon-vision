@@ -13,6 +13,6 @@ if __name__ == '__main__':
     streamer_process.start()
     detector_process.start()
     presenter_process.start()
-    streamer_process.join()
-    detector_process.join()
     presenter_process.join()
+    detector_process.join()
+    streamer_process.join()

@@ -1,7 +1,15 @@
 from multiprocessing import Queue
 
-from project.streamer.app_settings import AppSettings
+from presenter.present_motion import present_motion
 
 
 def presenter(detections_queue: Queue):
-    app_settings = AppSettings()
+    while True:
+        # Blocking function to detect a new frame in the queue
+        detection = detections_queue.get()
+        # None signals the video ended
+        if detection is None:
+            break
+        (frame, motion_contours) = detection
+
+        present_motion(frame, motion_contours)

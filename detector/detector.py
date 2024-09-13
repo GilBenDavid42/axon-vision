@@ -1,12 +1,11 @@
 from multiprocessing import Queue
 
-from detector.motion_contours_detector import MotionContoursDetector
+from detector.motion_contours import get_motion_contours
 from streamer.app_settings import AppSettings
 
 
 def detector(frame_queue: Queue, detections_queue: Queue):
     app_settings = AppSettings()
-    motion_contours_detector = MotionContoursDetector()
 
     prev_frame = frame_queue.get()
     while True:
@@ -16,5 +15,6 @@ def detector(frame_queue: Queue, detections_queue: Queue):
         if frame is None:
             break
 
-        motion_contours = motion_contours_detector.get_detection(prev_frame, frame)
+        motion_contours = get_motion_contours(prev_frame, frame)
+        detections_queue.put((frame, motion_contours))
         prev_frame = frame

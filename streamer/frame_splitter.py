@@ -1,15 +1,12 @@
-from pathlib import Path
-
 import cv2
 
 
 class FrameSplitter:
-    def __init__(self, video_path: Path):
-        self.video_path = video_path
+    def __init__(self, video_capture: cv2.VideoCapture):
+        self.video_capture = video_capture
 
     def split_frames(self):
-        cap = cv2.VideoCapture(self.video_path)
         next_frame_exists = True
         while next_frame_exists:
-            next_frame_exists, frame = cap.read()
+            next_frame_exists, frame = self.video_capture.read()
             yield frame

@@ -1,6 +1,6 @@
 from multiprocessing import Queue
 
-from detector.frame_motion_detector import MotionContoursDetector
+from detector.motion_contours_detector import MotionContoursDetector
 from streamer.app_settings import AppSettings
 
 

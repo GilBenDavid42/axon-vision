@@ -1,8 +1,11 @@
+from typing import Tuple
+
 import cv2
 import imutils
+from numpy import ndarray
 
 
-def get_motion_contours(prev_frame, frame):
+def get_motion_contours(prev_frame: ndarray, frame: ndarray) -> Tuple[ndarray]:
     # Convert frames to grayscale
     perv_gray_frame = cv2.cvtColor(prev_frame, cv2.COLOR_BGR2GRAY)
     gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
